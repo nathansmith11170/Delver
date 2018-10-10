@@ -48,7 +48,7 @@ void console_print(SDL_Renderer *gRenderer, LTexture *font, std::map<char, SDL_R
 	int i = 0;
 
 	//Set the location of the first character to render
-	SDL_Rect charView = { viewport->x + *column * viewport->x / 16, viewport->y + *row * viewport->y / 16, 16, 16 };
+	SDL_Rect charView = { viewport->x + (*column) * viewport->w / 15, viewport->y + (*row ) * viewport->h / 48, 16, 16 };
 	SDL_RenderSetViewport(gRenderer, &charView);
 
 	//Render the string
@@ -58,11 +58,11 @@ void console_print(SDL_Renderer *gRenderer, LTexture *font, std::map<char, SDL_R
 			*column += 1;
 			charView.x += 16;
 		}
-		if (str[i] == '\n' || *column > 14) {
+		if (str[i] == '\n' || (*column) > 14) {
 			*row += 1;
 			charView.y += 16;
 			*column = 0;
-			charView.x = viewport->x + *column * viewport->x / 16;
+			charView.x = viewport->x + (*column) * viewport->x / 30;
 		}
 		i++;
 		SDL_RenderSetViewport(gRenderer, &charView);

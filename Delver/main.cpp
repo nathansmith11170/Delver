@@ -163,9 +163,39 @@ int main(int argc, char* argv[]) {
 			//Console
 			row = 0;
 			column = 0;
-			console_print(gRenderer, &fontTexture, &letterClips, "Test for a \n longer string!", &row,\
+			console_print(gRenderer, &fontTexture, &letterClips, "The dark,\n", &row,\
 				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
-
+			console_print(gRenderer, &fontTexture, &letterClips, "twisting\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, "corridors of\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, "the maze seem\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, "to press in\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, "around you.\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, "The maze goes:\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			
+			for (i = 0; i < temp.size(); i++) {
+				if (temp.at(i) == currentVertex - NODES) {
+					console_print(gRenderer, &fontTexture, &letterClips, "north\n", &row, \
+						&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				}
+				if (temp.at(i) == currentVertex + NODES) {
+					console_print(gRenderer, &fontTexture, &letterClips, "south\n", &row, \
+						&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				}
+				if (temp.at(i) == currentVertex - 1) {
+					console_print(gRenderer, &fontTexture, &letterClips, "west\n", &row, \
+						&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				}
+				if (temp.at(i) == currentVertex + 1) {
+					console_print(gRenderer, &fontTexture, &letterClips, "east\n", &row, \
+						&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				}
+			}
 			SDL_RenderPresent(gRenderer);
 		}
 	}
