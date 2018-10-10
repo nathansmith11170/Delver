@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Delver OO", "Delver OO\Delver OO.vcxproj", "{89866611-C9B1-46AE-9BB7-1673C85218DA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Delver", "Delver\Delver OO.vcxproj", "{89866611-C9B1-46AE-9BB7-1673C85218DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8858722A-D3E1-4AE8-BDCD-FA7C2BC732D0}
+		SolutionGuid = {2352EC08-BF31-44D8-A559-205FCF8599A6}
 	EndGlobalSection
 EndGlobal
