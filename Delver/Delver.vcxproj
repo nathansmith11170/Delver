@@ -23,6 +23,7 @@
     <ProjectGuid>{89866611-C9B1-46AE-9BB7-1673C85218DA}</ProjectGuid>
     <RootNamespace>DelverOO</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>Delver</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,7 +77,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\SDL\SDL2_image-2.0.3\include;C:\SDL\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\SDL\SDL2-2.0.8\lib\x86;C:\SDL\SDL2_image-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,6 +122,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="close.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MazeGenerate.cpp" />
+    <ClCompile Include="init.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="prototypes.h" />
+    <ClInclude Include="LTexture.h" />
+    <ClInclude Include="MatrixGraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libjpeg-9.dll" />
+    <None Include="libpng16-16.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libwebp-7.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\OneDrive - The Ohio State University\Programs\C++\Delver\font.png" />
+    <Image Include="..\..\..\..\OneDrive - The Ohio State University\Programs\C++\Delver\tileset.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
