@@ -1,3 +1,9 @@
+/*
+	Author: Nathan Smith
+	This file contains the function defniitions for closing the program,
+	freeing memory of the renderer and the window.
+*/
+
 #include <SDL.h>
 #include "prototypes.h"
 

@@ -1,3 +1,9 @@
+/*
+	Author: Nathan Smith
+
+	This file contains the function prototypes for the Delver project
+*/
+
 #include <SDL.h>
 #include <map>
 #include "LTexture.h"

@@ -1,3 +1,10 @@
+/*
+	Author: Nathan Smith
+
+	This file contains the functions that initialize SDL components.
+	Heavily based upon code provided by Lazy Foo's tutorials, adpated for the 
+	current project
+*/
 #include <SDL.h>
 #include "prototypes.h"
 #include <stdio.h>

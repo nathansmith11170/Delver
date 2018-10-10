@@ -1,3 +1,12 @@
+/*
+	Author: Nathan Smith
+
+	Here is code taken from the Mazes with SFML project. A recurisve
+	backtracker that relies upon the MatrixGraph type, and a maze-generate
+	function that simply calls teh backtracker repeatedly until the maze is
+	complete.
+*/
+
 #include "MatrixGraph.h"
 #include "prototypes.h"
 #include <stack>

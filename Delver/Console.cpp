@@ -1,3 +1,12 @@
+/*
+	Author: Nathan Smith
+
+	This file contains the functions defining behavior of the console, a display of text
+	in the program.
+	It operated by reading parts of a png file and rendering those clips
+	ASCII characters are first read into a map, which maps teh character codes to the clip
+*/
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include "prototypes.h"

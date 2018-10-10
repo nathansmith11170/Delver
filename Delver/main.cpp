@@ -1,3 +1,10 @@
+/*
+	Author: Nathan Smith
+
+	This file holds the program logic and the references to the game's data.
+	It handles user input and display.
+*/
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>

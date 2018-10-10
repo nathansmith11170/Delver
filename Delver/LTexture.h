@@ -1,3 +1,12 @@
+/*
+	Author: Nathan Smith
+
+	A class that wraps SDL_Texture, based upon code in LazyFoo's SDL2 tutorials
+	adapted for the current project.
+	The class has behavior for clearing its memory, rendering clips of the
+	texture and accessing properties of the texture.
+*/
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
