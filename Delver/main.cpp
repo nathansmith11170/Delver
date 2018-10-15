@@ -12,6 +12,7 @@
 #include "prototypes.h"
 #include <ctime>
 #include <map>
+#include <set>
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
@@ -30,6 +31,7 @@ int main(int argc, char* argv[]) {
 
 	//Generate a maze with NODES * NODES vertices 
 	MatrixGraph maze = mazeGenerate(20);
+	std::set<int> visitedSet;
 
 	//Console viewport
 	SDL_Rect console = { SCREEN_WIDTH - 240, 0, 240, SCREEN_HEIGHT };
@@ -39,8 +41,10 @@ int main(int argc, char* argv[]) {
 	SDL_Rect leftBorder = { 0, 0, STROKE, SCREEN_HEIGHT };
 
 	rects = generateRects(maze, SCREEN_WIDTH, SCREEN_HEIGHT, STROKE);
+	
 	//Set current vertex to 0
 	currentVertex = 0;
+
 
 	if (init(SCREEN_WIDTH, SCREEN_HEIGHT, &gRenderer, &gWindow) == 0) {
 		printf("Failed to initialize.");
@@ -77,6 +81,7 @@ int main(int argc, char* argv[]) {
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex + 1 == temp.at(i)) {
 								currentVertex += 1;
+								visitedSet.insert(currentVertex);
 							}
 						}
 					}
@@ -85,6 +90,7 @@ int main(int argc, char* argv[]) {
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex - 1 == temp.at(i)) {
 								currentVertex -= 1;
+								visitedSet.insert(currentVertex);
 							}
 						}
 					}
@@ -93,6 +99,7 @@ int main(int argc, char* argv[]) {
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex + NODES == temp.at(i)) {
 								currentVertex += NODES;
+								visitedSet.insert(currentVertex);
 							}
 						}
 					}
@@ -101,6 +108,7 @@ int main(int argc, char* argv[]) {
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex - NODES == temp.at(i)) {
 								currentVertex -= NODES;
+								visitedSet.insert(currentVertex);
 							}
 						}
 					}
@@ -113,10 +121,28 @@ int main(int argc, char* argv[]) {
 			//Draw adjacent tiles
 			SDL_RenderSetViewport(gRenderer, NULL);
 			std::vector<int> temp = maze.get_neighbors(currentVertex);
-			SDL_Rect clip = { 16, 64, 16, 16 };
+			SDL_Rect clip;
 			for (j = 0; j < temp.size(); j++) {
 				SDL_RenderSetViewport(gRenderer, &rects.at(temp.at(j)));
+				clip = { 16, 64, 16, 16 };
 				tileSet.render(0, 0, &clip);
+				if (visitedSet.count(temp.at(j)) == 0) {
+					switch (spriteFrame) {
+						case 0:
+							clip = { 288, 272, 8, 9 };
+							break;
+						case 1:
+							clip = { 296, 272, 8, 9 };
+							break;
+						case 2:
+							clip = { 304, 272, 8, 9 };
+							break;
+						case 3:
+							clip = { 312, 272, 8, 9 };
+							break;
+					}
+					tileSet.render(0, 0, &clip);
+				}
 				SDL_RenderSetViewport(gRenderer, NULL);
 			}
 
