@@ -13,6 +13,7 @@
 #include <ctime>
 #include <map>
 #include <set>
+#include <string>
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
@@ -21,6 +22,7 @@
 
 int main(int argc, char* argv[]) {
 	int currentVertex;
+	long long score;
 	std::vector<SDL_Rect> rects;
 
 	//Name the window we'll be rendering to
@@ -44,6 +46,7 @@ int main(int argc, char* argv[]) {
 	
 	//Set current vertex to 0
 	currentVertex = 0;
+	score = 0;
 
 
 	if (init(SCREEN_WIDTH, SCREEN_HEIGHT, &gRenderer, &gWindow) == 0) {
@@ -80,8 +83,12 @@ int main(int argc, char* argv[]) {
 						std::vector<int> temp = maze.get_neighbors(currentVertex);
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex + 1 == temp.at(i)) {
+								if (visitedSet.count(currentVertex + 1) == 0) {
+									score += 10;
+								}
 								currentVertex += 1;
 								visitedSet.insert(currentVertex);
+								score -= 1;
 							}
 						}
 					}
@@ -89,8 +96,12 @@ int main(int argc, char* argv[]) {
 						std::vector<int> temp = maze.get_neighbors(currentVertex);
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex - 1 == temp.at(i)) {
+								if (visitedSet.count(currentVertex - 1) == 0) {
+									score += 10;
+								}
 								currentVertex -= 1;
 								visitedSet.insert(currentVertex);
+								score -= 1;
 							}
 						}
 					}
@@ -98,8 +109,12 @@ int main(int argc, char* argv[]) {
 						std::vector<int> temp = maze.get_neighbors(currentVertex);
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex + NODES == temp.at(i)) {
+								if (visitedSet.count(currentVertex + NODES) == 0) {
+									score += 10;
+								}
 								currentVertex += NODES;
 								visitedSet.insert(currentVertex);
+								score -= 1;
 							}
 						}
 					}
@@ -107,8 +122,12 @@ int main(int argc, char* argv[]) {
 						std::vector<int> temp = maze.get_neighbors(currentVertex);
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex - NODES == temp.at(i)) {
+								if (visitedSet.count(currentVertex -NODES) == 0) {
+									score += 10;
+								}
 								currentVertex -= NODES;
 								visitedSet.insert(currentVertex);
+								score -= 1;
 							}
 						}
 					}
@@ -222,6 +241,15 @@ int main(int argc, char* argv[]) {
 						&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
 				}
 			}
+
+			std::string str = std::to_string(score);
+			console_print(gRenderer, &fontTexture, &letterClips, "\nScore:", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, str.c_str(), &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+			console_print(gRenderer, &fontTexture, &letterClips, "\n", &row, \
+				&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+
 			SDL_RenderPresent(gRenderer);
 		}
 	}
