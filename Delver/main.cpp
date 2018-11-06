@@ -106,6 +106,18 @@ int main(int argc, char* argv[]) {
 						}
 					}
 					else if (e.key.keysym.sym == SDLK_DOWN) {
+						if (currentVertex == NODES * NODES - 1) {
+							//RECREATE MAZE
+							maze = mazeGenerate(20);
+							//SET currentVertex back to 0
+							currentVertex = 0;
+							//CLEAR visitedSet
+							visitedSet.clear();
+							//Reset edges
+							rects.clear();
+							rects = generateRects(maze, SCREEN_WIDTH, SCREEN_HEIGHT, STROKE);
+							continue;
+						}
 						std::vector<int> temp = maze.get_neighbors(currentVertex);
 						for (i = 0; i < temp.size(); i++) {
 							if (currentVertex + NODES == temp.at(i)) {
@@ -240,6 +252,19 @@ int main(int argc, char* argv[]) {
 					console_print(gRenderer, &fontTexture, &letterClips, "east\n", &row, \
 						&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
 				}
+			}
+
+			if (currentVertex == NODES * NODES - 1) {
+				console_print(gRenderer, &fontTexture, &letterClips, "There is a\n", &row, \
+					&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				console_print(gRenderer, &fontTexture, &letterClips, "ladder going\n", &row, \
+					&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				console_print(gRenderer, &fontTexture, &letterClips, "down. Press\n", &row, \
+					&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				console_print(gRenderer, &fontTexture, &letterClips, "the down\n", &row, \
+					&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
+				console_print(gRenderer, &fontTexture, &letterClips, "arrow.\n", &row, \
+					&column, &consoleView, SCREEN_WIDTH, SCREEN_HEIGHT);
 			}
 
 			std::string str = std::to_string(score);
