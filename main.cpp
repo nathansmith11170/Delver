@@ -20,6 +20,15 @@
 #define NODES 20
 #define STROKE 2
 
+void close(SDL_Renderer **renderer, SDL_Window **window) {
+	SDL_DestroyRenderer(*renderer);
+	SDL_DestroyWindow(*window);
+	*renderer = NULL;
+	*window = NULL;
+
+	SDL_Quit();
+}
+
 int main(int argc, char* argv[]) {
 	int currentVertex;
 	long long score;

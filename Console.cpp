@@ -8,7 +8,7 @@
 */
 
 #include <SDL.h>
-#include <SDL/SDL_image.h>
+#include <SDL_image.h>
 #include "prototypes.h"
 
 void read_characters(LTexture font, std::map<char, SDL_Rect> *letterClips) {
